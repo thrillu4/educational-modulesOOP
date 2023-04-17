@@ -47,16 +47,6 @@ export default class MainSlider extends Slider {
                 this.plusSlides(n)
             })
         })
-
-        this.btns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.plusSlides(1);
-            })
-            btn.parentNode.previousElementSibling.addEventListener('click', () => {
-                this.slideIndex = 1;
-                this.showSlides(this.slideIndex);
-            })
-        })
     }
 
     render() {
@@ -64,7 +54,17 @@ export default class MainSlider extends Slider {
             try {
                 this.teacher = document.querySelector('.hanson');
                 } catch (e) {}
-            
+
+            this.btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.plusSlides(1);
+                })
+                btn.parentNode.previousElementSibling.addEventListener('click', () => {
+                    this.slideIndex = 1;
+                    this.showSlides(this.slideIndex);
+                })
+            })
+        
             this.showSlides(this.slideIndex);
             this.bindTriggers(this.modulesNext, 1);
             this.bindTriggers(this.modulesPrev, -1);
